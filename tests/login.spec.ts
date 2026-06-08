@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('login', async ({ page }) => {
   await page.goto('https://example.com/login');
 
-  await page.getByLabel('Email')
+  await page.getByLabel('email')
     .fill('test@example.com');
 
   await page.getByLabel('Password')
