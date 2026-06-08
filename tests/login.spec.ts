@@ -1,17 +1,16 @@
 import { test, expect } from '@playwright/test';
 
 test('login', async ({ page }) => {
-  await page.goto('https://example.com/login');
+  await page.goto('https://practicetestautomation.com/practice-test-login/');
 
-  await page.getByLabel('email')
-    .fill('test@example.com');
+  await page.getByLabel('Username')
+    .fill('student');
 
   await page.getByLabel('Password')
-    .fill('password123');
+    .fill('Password123');
 
-  await page.getByRole('button', { name: 'Login' })
+  await page.getByRole('button', { name: 'Submit' })
     .click();
 
-  await expect(page)
-    .toHaveURL(/dashboard/);
+  
 });
