@@ -25,3 +25,15 @@ jobs:
       - run: npx playwright install --with-deps
 
       - run: npx playwright test
+
+      - name: Upload Playwright report to TestDino
+        if: always()
+        env:
+          TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+        run: |
+          if [ -z "$TESTDINO_TOKEN" ]; then
+            echo "Skipping TestDino upload because TESTDINO_TOKEN is not configured."
+            exit 0
+          fi
+
+          npx --yes tdpw upload ./playwright-report --token="$TESTDINO_TOKEN" --upload-html --upload-full-json
